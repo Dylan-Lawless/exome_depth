@@ -42,7 +42,9 @@ my.counts <- getBamCounts(
 ExomeCount.dafr <- as(my.counts[, colnames(my.counts)],
                       'data.frame')
 
-ExomeCount.dafr$space <- gsub(as.character(ExomeCount.dafr$space), pattern = 'chr', replacement = ' ')
+ExomeCount.dafr$space <- gsub(as.character(ExomeCount.dafr$space),
+                              pattern = 'chr',
+                              replacement = ' ')
 
 print(head(ExomeCount.dafr))
 
@@ -141,10 +143,11 @@ print(head(all.exons@CNV.calls))
 #######################################
 ####  Process the Conrad et al data in the GRanges format
 #######################################
-exons.hg19.GRanges <- GenomicRanges::GRanges(seqnames=exons.hg19$chromosome,
-                                             IRanges::IRanges(start=exons.hg19$start,
-                                                              end=exons.hg19$end),
-                                             names=exons.hg19$name)
+exons.hg19.GRanges <- GenomicRanges::GRanges(
+                        seqnames=exons.hg19$chromosome,
+                        IRanges::IRanges(start=exons.hg19$start,
+                                         end=exons.hg19$end),
+                        names=exons.hg19$name)
 
 #######################################
 ####  Annotate CNVs with location, gene names, etc.
